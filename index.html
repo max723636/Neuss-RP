@@ -3,156 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dresden RP Discord</title>
+<title>Dresden RP</title>
 
 <style>
 
-/* Hintergrund */
-body {
-margin: 0;
-padding: 0;
-font-family: Arial, sans-serif;
-background: linear-gradient(135deg, #1a1a2e, #162447);
-color: #fff;
-display: flex;
-flex-direction: column;
-align-items: center;
-min-height: 100vh;
-text-align: center;
+/* Animierter Hintergrund */
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+text-align:center;
+min-height:100vh;
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#162447);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
 }
 
-/* Überschrift */
-h1 {
-margin-top: 40px;
-font-size: 36px;
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-p.description {
-max-width: 700px;
-font-size: 18px;
-line-height: 1.6;
-margin: 20px auto;
-padding: 0 20px;
+/* Text */
+
+h1{
+margin-top:50px;
+font-size:38px;
 }
 
-hr {
-border: 0;
-height: 2px;
-background: rgba(255,255,255,0.3);
-margin: 30px 0;
-width: 80%;
+.description{
+max-width:700px;
+margin:auto;
+font-size:18px;
+padding:10px 20px;
 }
 
-ul {
-text-align: left;
-max-width: 700px;
-margin: 0 auto 30px auto;
-padding: 0 20px;
-list-style: none;
+/* Linien */
+
+hr{
+width:80%;
+border:none;
+height:2px;
+background:rgba(255,255,255,0.3);
+margin:40px auto;
 }
 
-ul li {
-margin: 8px 0;
-font-size: 18px;
+/* Buttons */
+
+.discord-button{
+background:black;
+color:white;
+padding:15px 45px;
+border-radius:10px;
+font-size:20px;
+text-decoration:none;
+display:inline-block;
+margin:10px;
+transition:0.3s;
+box-shadow:0 0 10px rgba(255,255,255,0.3);
 }
 
-/* Discord Button */
-.discord-button {
-background-color: #000;
-color: #fff;
-padding: 15px 50px;
-font-size: 20px;
-font-weight: bold;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-text-decoration: none;
-margin-bottom: 50px;
-transition: all 0.3s ease;
-box-shadow: 0 0 10px rgba(255,255,255,0.2);
-}
-
-.discord-button:hover {
-background-color: #333;
-transform: scale(1.05);
-box-shadow: 0 0 20px rgba(255,255,255,0.5);
+.discord-button:hover{
+transform:scale(1.07);
+background:#333;
+box-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
 /* Server Bild */
-.server-image {
-max-width: 250px;
-border-radius: 15px;
-margin: 30px 0;
-box-shadow: 0 0 30px rgba(255,255,255,0.4);
-transition: transform 0.3s, box-shadow 0.3s;
+
+.server-image{
+width:230px;
+border-radius:15px;
+margin:30px;
+box-shadow:0 0 25px rgba(255,255,255,0.5);
 }
 
-.server-image:hover {
-transform: scale(1.05);
-box-shadow: 0 0 50px rgba(255,255,255,0.7);
+/* Menü */
+
+.menu-toggle{
+position:fixed;
+top:20px;
+right:25px;
+cursor:pointer;
+z-index:1000;
 }
 
-/* Hamburger Menü */
-.menu-toggle {
-position: fixed;
-top: 20px;
-right: 25px;
-width: 35px;
-height: 30px;
-cursor: pointer;
-z-index: 1000;
+.menu-toggle span{
+display:block;
+width:35px;
+height:4px;
+background:white;
+margin:6px;
+transition:0.4s;
 }
 
-.menu-toggle span {
-display: block;
-height: 4px;
-width: 100%;
-background: white;
-margin: 6px 0;
-transition: 0.4s;
+.menu-toggle.active span:nth-child(1){
+transform:rotate(-45deg) translate(-8px,6px);
 }
 
-.menu-toggle.active span:nth-child(1) {
-transform: rotate(-45deg) translate(-8px, 6px);
+.menu-toggle.active span:nth-child(2){
+opacity:0;
 }
 
-.menu-toggle.active span:nth-child(2) {
-opacity: 0;
+.menu-toggle.active span:nth-child(3){
+transform:rotate(45deg) translate(-7px,-7px);
 }
 
-.menu-toggle.active span:nth-child(3) {
-transform: rotate(45deg) translate(-7px, -7px);
+.menu{
+position:fixed;
+top:0;
+right:-260px;
+width:260px;
+height:100%;
+background:#111;
+padding-top:90px;
+transition:0.4s;
+box-shadow:-5px 0 25px black;
 }
 
-/* Menü Panel */
-.menu {
-position: fixed;
-top: 0;
-right: -270px;
-width: 270px;
-height: 100%;
-background: rgba(15, 52, 96, 0.95);
-backdrop-filter: blur(10px);
-padding-top: 80px;
-transition: 0.4s;
-box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+.menu.active{
+right:0;
 }
 
-.menu.active {
-right: 0;
+.menu a{
+display:block;
+padding:15px 25px;
+font-size:20px;
+color:white;
+text-decoration:none;
 }
 
-.menu a {
-display: block;
-padding: 15px 25px;
-font-size: 20px;
-color: white;
-text-decoration: none;
-transition: 0.3s;
+.menu a:hover{
+background:#222;
 }
 
-.menu a:hover {
-background: rgba(255,255,255,0.1);
+/* Server Box */
+
+.server-box{
+background:rgba(0,0,0,0.5);
+padding:25px;
+border-radius:15px;
+width:300px;
+margin:auto;
+box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+.online{
+color:#47ff47;
+font-weight:bold;
 }
 
 </style>
@@ -161,6 +161,7 @@ background: rgba(255,255,255,0.1);
 <body>
 
 <!-- Menü Button -->
+
 <div class="menu-toggle" onclick="toggleMenu()">
 <span></span>
 <span></span>
@@ -168,90 +169,100 @@ background: rgba(255,255,255,0.1);
 </div>
 
 <!-- Menü -->
+
 <div class="menu" id="menu">
+
 <a href="#">🏠 Home</a>
+
 <a href="#ankuendigungen">📢 Ankündigungen</a>
+
 <a href="#ingame">🎮 Ingame Server</a>
+
 </div>
 
-<h1>🎉 Willkommen auf 🇩🇪 Dresden RP 🇩🇪! 🎉</h1>
+<h1>🎉 Willkommen auf Dresden RP 🇩🇪</h1>
 
 <img class="server-image" src="https://cdn.discordapp.com/attachments/1440690813775515728/1480198332503822537/IMG_20260225_195255.png">
 
 <p class="description">
-Tauche ein in realistisches Roleplay, spannende Szenarien und eine aktive Community, die gemeinsam unvergessliche RP-Momente erlebt.
+Realistisches Roleplay, spannende Szenarien und eine aktive Community erwarten dich!
 </p>
 
 <hr>
 
-<h2>🌟 Das erwartet dich bei uns:</h2>
+<h2>🌟 Das erwartet dich</h2>
 
-<ul>
-<li>👥 Freundliche & hilfsbereite Community</li>
-<li>🎮 Aktives Roleplay zu jeder Tageszeit</li>
-<li>💡 Raum für kreative Ideen & eigene Geschichten</li>
-<li>🏆 Regelmäßige Events & abwechslungsreiches RP</li>
-<li>⚖️ Engagiertes, faires und erfahrenes Team</li>
-</ul>
+<p class="description">
+👮 Polizei • 🚒 Feuerwehr • 🚑 Rettungsdienst • 💰 Gangs • 🏆 Events
+</p>
 
 <hr>
-
-<h2>🚓 Jobs & Fraktionen:</h2>
-
-<ul>
-<li>👮 Polizei</li>
-<li>🚒 Feuerwehr</li>
-<li>🚑 Rettungsdienst</li>
-<li>🚖 Taxi-, Bus- & LKW-Fahrer</li>
-<li>💰 Kriminelle Organisationen, Gangs & Untergrund</li>
-</ul>
-
-<p class="description">✨ Und vieles mehr wartet auf dich!</p>
-
-<hr>
-
-<h2>✅ Das solltest du mitbringen:</h2>
-
-<ul>
-<li>😄 Freude am Roleplay</li>
-<li>🤝 Respekt, Freundlichkeit & Teamgeist</li>
-<li>💬 Aktivität und Motivation</li>
-</ul>
 
 <a href="https://discord.gg/ZDwjNw6d6B" target="_blank" class="discord-button">
-Jetzt dem Discord beitreten!
+Discord beitreten
+</a>
+
+<a href="https://discord.gg/ssFRZyvAQ" target="_blank" class="discord-button">
+Roblox Community
 </a>
 
 <hr>
 
-<h2 id="ankuendigungen">📢 Discord Server</h2>
+<h2 id="ankuendigungen">📢 Ankündigungen</h2>
 
-<iframe 
-src="https://discord.com/widget?id=1406327849379692544&theme=dark"
-width="350"
-height="500"
-allowtransparency="true"
-frameborder="0">
-</iframe>
+<div id="announcements">
+
+<p>Keine neuen Ankündigungen.</p>
+
+</div>
 
 <hr>
 
 <h2 id="ingame">🎮 Ingame Server</h2>
 
-<p class="description">
-Trete unserem Roblox Roleplay Server bei und erlebe Dresden RP direkt im Spiel!
-</p>
+<div class="server-box">
 
-<a href="https://www.roblox.com" target="_blank" class="discord-button">
-Zum Ingame Server
+<h3>Dresden RP Roblox Server</h3>
+
+<p>Status: <span class="online">Online</span></p>
+
+<p>Spieler Online: <span id="players">0</span> / 40</p>
+
+<a href="https://www.roblox.com/games/start?privateServerLinkCode=mpfi3yi9" 
+target="_blank" 
+class="discord-button">
+
+Server beitreten
+
 </a>
+
+</div>
 
 <script>
 
-function toggleMenu() {
+/* Menü */
+
+function toggleMenu(){
+
 document.querySelector(".menu-toggle").classList.toggle("active");
+
 document.getElementById("menu").classList.toggle("active");
+
 }
+
+/* Fake Live Spielerzahl */
+
+function updatePlayers(){
+
+let players = Math.floor(Math.random()*40);
+
+document.getElementById("players").innerText = players;
+
+}
+
+setInterval(updatePlayers,5000);
+
+updatePlayers();
 
 </script>
 
