@@ -6,9 +6,7 @@
 <title>Dresden RP</title>
 
 <style>
-
 /* Animierter Hintergrund */
-
 body{
 margin:0;
 font-family:Arial;
@@ -19,7 +17,6 @@ background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#162447);
 background-size:400% 400%;
 animation:bg 12s ease infinite;
 }
-
 @keyframes bg{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
@@ -27,21 +24,16 @@ animation:bg 12s ease infinite;
 }
 
 /* Text */
-
 h1{
 margin-top:50px;
 font-size:38px;
 }
-
 .description{
 max-width:700px;
 margin:auto;
 font-size:18px;
 padding:10px 20px;
 }
-
-/* Linien */
-
 hr{
 width:80%;
 border:none;
@@ -51,7 +43,6 @@ margin:40px auto;
 }
 
 /* Buttons */
-
 .discord-button{
 background:black;
 color:white;
@@ -64,7 +55,6 @@ margin:10px;
 transition:0.3s;
 box-shadow:0 0 10px rgba(255,255,255,0.3);
 }
-
 .discord-button:hover{
 transform:scale(1.07);
 background:#333;
@@ -72,7 +62,6 @@ box-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
 /* Server Bild */
-
 .server-image{
 width:230px;
 border-radius:15px;
@@ -81,7 +70,6 @@ box-shadow:0 0 25px rgba(255,255,255,0.5);
 }
 
 /* Menü */
-
 .menu-toggle{
 position:fixed;
 top:20px;
@@ -89,7 +77,6 @@ right:25px;
 cursor:pointer;
 z-index:1000;
 }
-
 .menu-toggle span{
 display:block;
 width:35px;
@@ -98,19 +85,15 @@ background:white;
 margin:6px;
 transition:0.4s;
 }
-
 .menu-toggle.active span:nth-child(1){
 transform:rotate(-45deg) translate(-8px,6px);
 }
-
 .menu-toggle.active span:nth-child(2){
 opacity:0;
 }
-
 .menu-toggle.active span:nth-child(3){
 transform:rotate(45deg) translate(-7px,-7px);
 }
-
 .menu{
 position:fixed;
 top:0;
@@ -122,11 +105,9 @@ padding-top:90px;
 transition:0.4s;
 box-shadow:-5px 0 25px black;
 }
-
 .menu.active{
 right:0;
 }
-
 .menu a{
 display:block;
 padding:15px 25px;
@@ -134,13 +115,11 @@ font-size:20px;
 color:white;
 text-decoration:none;
 }
-
 .menu a:hover{
 background:#222;
 }
 
 /* Server Box */
-
 .server-box{
 background:rgba(0,0,0,0.5);
 padding:25px;
@@ -149,19 +128,12 @@ width:300px;
 margin:auto;
 box-shadow:0 0 20px rgba(255,255,255,0.3);
 }
-
-.online{
-color:#47ff47;
-font-weight:bold;
-}
-
 </style>
 </head>
 
 <body>
 
 <!-- Menü Button -->
-
 <div class="menu-toggle" onclick="toggleMenu()">
 <span></span>
 <span></span>
@@ -169,15 +141,10 @@ font-weight:bold;
 </div>
 
 <!-- Menü -->
-
 <div class="menu" id="menu">
-
 <a href="#">🏠 Home</a>
-
 <a href="#ankuendigungen">📢 Ankündigungen</a>
-
 <a href="#ingame">🎮 Ingame Server</a>
-
 </div>
 
 <h1>🎉 Willkommen auf Dresden RP 🇩🇪</h1>
@@ -209,61 +176,37 @@ Roblox Community
 <hr>
 
 <h2 id="ankuendigungen">📢 Ankündigungen</h2>
-
 <div id="announcements">
-
-<p>Keine neuen Ankündigungen.</p>
-
+<p>Lade Ankündigungen...</p>
 </div>
 
 <hr>
 
 <h2 id="ingame">🎮 Ingame Server</h2>
-
 <div class="server-box">
-
 <h3>Dresden RP Roblox Server</h3>
-
-<p>Status: <span class="online">Online</span></p>
-
-<p>Spieler Online: <span id="players">0</span> / 40</p>
-
+<p>Status: Online</p>
 <a href="https://www.roblox.com/games/start?privateServerLinkCode=mpfi3yi9" 
-target="_blank" 
-class="discord-button">
-
+target="_blank" class="discord-button">
 Server beitreten
-
 </a>
-
 </div>
 
 <script>
-
-/* Menü */
-
 function toggleMenu(){
-
 document.querySelector(".menu-toggle").classList.toggle("active");
-
 document.getElementById("menu").classList.toggle("active");
-
 }
 
-/* Fake Live Spielerzahl */
-
-function updatePlayers(){
-
-let players = Math.floor(Math.random()*40);
-
-document.getElementById("players").innerText = players;
-
-}
-
-setInterval(updatePlayers,5000);
-
-updatePlayers();
-
+/* Discord Webhook Ankündigungen */
+fetch("https://discord.com/api/webhooks/1480961543062421729/xahlghzdcW1YwsHDjofz5a90jcqKUBiGsKBRQy0LUfalIkwDgtyswwjOrH-gAtV5DXYP")
+.then(response=>response.json())
+.then(data=>{
+document.getElementById("announcements").innerHTML="<p>"+data.content+"</p>";
+})
+.catch(()=>{
+document.getElementById("announcements").innerHTML="<p>Keine Ankündigungen gefunden.</p>";
+});
 </script>
 
 </body>
