@@ -3,116 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neuss RP Discord</title>
+<title>Dresden RP Discord</title>
+
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #1a1a2e, #162447);
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        text-align: center;
-    }
 
-    h1 {
-        margin-top: 40px;
-        font-size: 36px;
-    }
+/* Hintergrund */
+body {
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg, #1a1a2e, #162447);
+color: #fff;
+display: flex;
+flex-direction: column;
+align-items: center;
+min-height: 100vh;
+text-align: center;
+}
 
-    p.description {
-        max-width: 700px;
-        font-size: 18px;
-        line-height: 1.6;
-        margin: 20px auto;
-        padding: 0 20px;
-    }
+/* Überschrift */
+h1 {
+margin-top: 40px;
+font-size: 36px;
+}
 
-    hr {
-        border: 0;
-        height: 2px;
-        background: rgba(255,255,255,0.3);
-        margin: 30px 0;
-        width: 80%;
-    }
+p.description {
+max-width: 700px;
+font-size: 18px;
+line-height: 1.6;
+margin: 20px auto;
+padding: 0 20px;
+}
 
-    ul {
-        text-align: left;
-        max-width: 700px;
-        margin: 0 auto 30px auto;
-        padding: 0 20px;
-        list-style: none;
-    }
+hr {
+border: 0;
+height: 2px;
+background: rgba(255,255,255,0.3);
+margin: 30px 0;
+width: 80%;
+}
 
-    ul li {
-        margin: 8px 0;
-        font-size: 18px;
-    }
+ul {
+text-align: left;
+max-width: 700px;
+margin: 0 auto 30px auto;
+padding: 0 20px;
+list-style: none;
+}
 
-    .discord-button {
-        background-color: #000;
-        color: #fff;
-        padding: 15px 50px;
-        font-size: 20px;
-        font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        text-decoration: none;
-        margin-bottom: 50px;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
+ul li {
+margin: 8px 0;
+font-size: 18px;
+}
 
-    .discord-button:hover {
-        background-color: #333;
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255,255,255,0.5);
-    }
-.roblox-button {
-        background-color: #000;
-        color: #fff;
-        padding: 15px 50px;
-        font-size: 20px;
-        font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        text-decoration: none;
-        margin-bottom: 50px;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
+/* Discord Button */
+.discord-button {
+background-color: #000;
+color: #fff;
+padding: 15px 50px;
+font-size: 20px;
+font-weight: bold;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+text-decoration: none;
+margin-bottom: 50px;
+transition: all 0.3s ease;
+box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
 
-    .roblox-button:hover {
-        background-color: #333;
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255,255,255,0.5);
-    }
+.discord-button:hover {
+background-color: #333;
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
 
-    .server-image {
-        max-width: 250px;
-        border-radius: 15px;
-        margin: 30px 0;
-        box-shadow: 0 0 30px rgba(255,255,255,0.4);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
+/* Server Bild */
+.server-image {
+max-width: 250px;
+border-radius: 15px;
+margin: 30px 0;
+box-shadow: 0 0 30px rgba(255,255,255,0.4);
+transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    .server-image:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 50px rgba(255,255,255,0.7);
-    }
+.server-image:hover {
+transform: scale(1.05);
+box-shadow: 0 0 50px rgba(255,255,255,0.7);
+}
+
+/* Hamburger Menü */
+.menu-toggle {
+position: fixed;
+top: 20px;
+right: 25px;
+width: 35px;
+height: 30px;
+cursor: pointer;
+z-index: 1000;
+}
+
+.menu-toggle span {
+display: block;
+height: 4px;
+width: 100%;
+background: white;
+margin: 6px 0;
+transition: 0.4s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+transform: rotate(-45deg) translate(-8px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+transform: rotate(45deg) translate(-7px, -7px);
+}
+
+/* Menü Panel */
+.menu {
+position: fixed;
+top: 0;
+right: -270px;
+width: 270px;
+height: 100%;
+background: rgba(15, 52, 96, 0.95);
+backdrop-filter: blur(10px);
+padding-top: 80px;
+transition: 0.4s;
+box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+}
+
+.menu.active {
+right: 0;
+}
+
+.menu a {
+display: block;
+padding: 15px 25px;
+font-size: 20px;
+color: white;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.menu a:hover {
+background: rgba(255,255,255,0.1);
+}
 
 </style>
 </head>
+
 <body>
 
-<h1>🎉 Willkommen auf 🇩🇪 Neuss RP 🇩🇪! 🎉</h1>
+<!-- Menü Button -->
+<div class="menu-toggle" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
 
-<img class="server-image" src="https://cdn.discordapp.com/attachments/1440690813775515728/1480198332503822537/IMG_20260225_195255.png" alt="Neuss RP Server">
+<!-- Menü -->
+<div class="menu" id="menu">
+<a href="#">🏠 Home</a>
+<a href="#ankuendigungen">📢 Ankündigungen</a>
+<a href="#ingame">🎮 Ingame Server</a>
+</div>
+
+<h1>🎉 Willkommen auf 🇩🇪 Dresden RP 🇩🇪! 🎉</h1>
+
+<img class="server-image" src="https://cdn.discordapp.com/attachments/1440690813775515728/1480198332503822537/IMG_20260225_195255.png">
 
 <p class="description">
 Tauche ein in realistisches Roleplay, spannende Szenarien und eine aktive Community, die gemeinsam unvergessliche RP-Momente erlebt.
@@ -121,23 +185,25 @@ Tauche ein in realistisches Roleplay, spannende Szenarien und eine aktive Commun
 <hr>
 
 <h2>🌟 Das erwartet dich bei uns:</h2>
+
 <ul>
-    <li>👥 Freundliche & hilfsbereite Community</li>
-    <li>🎮 Aktives Roleplay zu jeder Tageszeit</li>
-    <li>💡 Raum für kreative Ideen & eigene Geschichten</li>
-    <li>🏆 Regelmäßige Events & abwechslungsreiches RP</li>
-    <li>⚖️ Engagiertes, faires und erfahrenes Team</li>
+<li>👥 Freundliche & hilfsbereite Community</li>
+<li>🎮 Aktives Roleplay zu jeder Tageszeit</li>
+<li>💡 Raum für kreative Ideen & eigene Geschichten</li>
+<li>🏆 Regelmäßige Events & abwechslungsreiches RP</li>
+<li>⚖️ Engagiertes, faires und erfahrenes Team</li>
 </ul>
 
 <hr>
 
 <h2>🚓 Jobs & Fraktionen:</h2>
+
 <ul>
-    <li>👮 Polizei</li>
-    <li>🚒 Feuerwehr</li>
-    <li>🚑 Rettungsdienst</li>
-    <li>🚖 Taxi-, Bus- & LKW-Fahrer</li>
-    <li>💰 Kriminelle Organisationen, Gangs & Untergrund</li>
+<li>👮 Polizei</li>
+<li>🚒 Feuerwehr</li>
+<li>🚑 Rettungsdienst</li>
+<li>🚖 Taxi-, Bus- & LKW-Fahrer</li>
+<li>💰 Kriminelle Organisationen, Gangs & Untergrund</li>
 </ul>
 
 <p class="description">✨ Und vieles mehr wartet auf dich!</p>
@@ -145,15 +211,49 @@ Tauche ein in realistisches Roleplay, spannende Szenarien und eine aktive Commun
 <hr>
 
 <h2>✅ Das solltest du mitbringen:</h2>
+
 <ul>
-    <li>😄 Freude am Roleplay</li>
-    <li>🤝 Respekt, Freundlichkeit & Teamgeist</li>
-    <li>💬 Aktivität und Motivation</li>
+<li>😄 Freude am Roleplay</li>
+<li>🤝 Respekt, Freundlichkeit & Teamgeist</li>
+<li>💬 Aktivität und Motivation</li>
 </ul>
 
-<a href="https://discord.gg/ssFRZyvAQ" target="_blank" class="discord-button">Jetzt dem Discord beitreten!</a>
+<a href="https://discord.gg/ZDwjNw6d6B" target="_blank" class="discord-button">
+Jetzt dem Discord beitreten!
+</a>
 
-<a href="https://www.roblox.com/share/g/35950861" target="_blank" class="roblox-button">Roblox Community betreten!</a>
+<hr>
+
+<h2 id="ankuendigungen">📢 Discord Server</h2>
+
+<iframe 
+src="https://discord.com/widget?id=DEINE_SERVER_ID&theme=dark"
+width="350"
+height="500"
+allowtransparency="true"
+frameborder="0">
+</iframe>
+
+<hr>
+
+<h2 id="ingame">🎮 Ingame Server</h2>
+
+<p class="description">
+Trete unserem Roblox Roleplay Server bei und erlebe Dresden RP direkt im Spiel!
+</p>
+
+<a href="https://www.roblox.com" target="_blank" class="discord-button">
+Zum Ingame Server
+</a>
+
+<script>
+
+function toggleMenu() {
+document.querySelector(".menu-toggle").classList.toggle("active");
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>
 
 </body>
 </html>
